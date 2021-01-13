@@ -13,18 +13,18 @@ pipeline {
             }
         }
         stage('Test') {
-                    steps {
-                        sh 'mvn test'
-                    }
+            steps {
+                sh 'mvn test'
 
-                    publishHTML target: [
-                                allowMissing: false,
-                                alwaysLinkToLastBuild: false,
-                                keepAll: true,
-                                reportDir: 'coverage',
-                                reportFiles: 'index.html',
-                                reportName: 'HTML Report'
-                              ]
+                publishHTML target: [
+                    allowMissing: false,
+                    alwaysLinkToLastBuild: false,
+                    keepAll: true,
+                    reportDir: 'coverage',
+                    reportFiles: 'index.html',
+                    reportName: 'HTML Report'
+                ]
+            }
         }
     }
 }
