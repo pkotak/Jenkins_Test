@@ -4,12 +4,16 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'mvn -B -DskipTests clean package'
+                withMaven(maven : 'apache-maven-3.6.1') {
+                    sh 'mvn -B -DskipTests clean package'
+                }
             }
         }
         stage('Test') {
             steps {
-                sh 'mvn test'
+                withMaven(maven : 'apache-maven-3.6.1') {
+                    sh 'mvn test'
+                }
 
                 publishHTML target: [
                     allowMissing: false,
