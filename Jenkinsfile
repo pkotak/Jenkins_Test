@@ -16,11 +16,7 @@ pipeline {
                     steps {
                         sh 'mvn test'
                     }
-                    post {
-                        always {
-                            junit 'target/surefire-reports/*.xml'
-                        }
-                    }
+
                     publishHTML target: [
                                 allowMissing: false,
                                 alwaysLinkToLastBuild: false,
